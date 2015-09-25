@@ -1,0 +1,37 @@
+---
+ip: "192.168.10.10"
+memory: 2048
+cpus: 1
+hostname: homestead.app
+name: homestead
+provider: virtualbox
+
+# IF YOU ARE ON WINDOWS, BE SURE TO USE DOUBLE
+# SLASHES ALL PATHS ENTERED BELOW (e.x. C:\\Users\\)
+
+# Enter the path to your SSH key here...
+authorize: ~/.ssh/id_rsa.pub
+
+# ...and here
+keys:
+    - ~/.ssh/id_rsa
+
+# Enter the path to the project folder
+folders:
+    - map: ""
+      to: "/home/vagrant/src"
+
+sites:
+    - map: homestead.app
+      to: "/home/vagrant/src/public"
+
+databases:
+    - homestead
+
+variables:
+    - key: APP_ENV
+      value: local
+
+ports:
+    - send: 35729
+      to: 35729
