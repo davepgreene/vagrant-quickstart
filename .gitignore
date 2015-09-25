@@ -4,3 +4,4 @@ vendor/*
 .vagrant/*
 !src/.gitignore
 src/*
+composer.lock
