@@ -1,3 +1,6 @@
 provision/aliases
 provision/Homestead.yaml
 vendor/*
+.vagrant/*
+!src/.gitignore
+src/*
