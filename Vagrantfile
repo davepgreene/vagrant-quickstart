@@ -1,30 +1,30 @@
 require 'json'
 require 'yaml'
 
-VAGRANTFILE_API_VERSION = "2"
-confDir = $confDir ||= File.expand_path("vendor/laravel/homestead")
+VAGRANTFILE_API_VERSION = '2'
+conf_dir = File.expand_path('provision/homestead')
 
-provisionDir = File.expand_path("provision")
+provision_dir = File.expand_path('provision')
 
-homesteadYamlPath = File.join(provisionDir, "Homestead.yaml")
-homesteadJsonPath = File.join(provisionDir, "Homestead.json")
-afterScriptPath = File.join(provisionDir, "after.sh")
-aliasesPath = File.join(provisionDir, "aliases")
+homestead_yaml_path = File.join(provision_dir, 'Homestead.yaml')
+homestead_json_path = File.join(provision_dir, 'Homestead.json')
+after_script_path = File.join(provision_dir, 'after.sh')
+aliases_path = File.join(provision_dir, 'aliases')
 
-require File.expand_path(confDir + '/scripts/homestead.rb')
+require File.expand_path(conf_dir + '/scripts/homestead.rb')
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    if File.exists? aliasesPath then
-        config.vm.provision "file", source: aliasesPath, destination: "~/.bash_aliases"
-    end
+  if File.exist? aliases_path
+    config.vm.provision 'file', source: aliases_path, destination: '~/.bash_aliases'
+  end
 
-    if File.exists? homesteadYamlPath then
-        Homestead.configure(config, YAML::load(File.read(homesteadYamlPath)))
-    elsif File.exists? homesteadJsonPath then
-        Homestead.configure(config, JSON.parse(File.read(homesteadJsonPath)))
-    end
+  if File.exist? homestead_yaml_path
+    Homestead.configure(config, YAML.load(File.read(homestead_yaml_path)))
+  elsif File.exist? homestead_json_path
+    Homestead.configure(config, JSON.parse(File.read(homestead_json_path)))
+  end
 
-    if File.exists? afterScriptPath then
-        config.vm.provision "shell", path: afterScriptPath
-    end
+  if File.exist? after_script_path
+    config.vm.provision 'shell', path: after_script_path
+  end
 end

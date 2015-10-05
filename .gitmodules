@@ -1,0 +1,3 @@
+[submodule "provision/homestead"]
+	path = provision/homestead
+	url = https://github.com/laravel/homestead

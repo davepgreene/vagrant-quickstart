@@ -8,10 +8,10 @@ Using this repo requires the following:
 
 * [Vagrant](vagrantup.com)
 * [VirtualBox](virtualbox.org)
-* [PHP 5.6](http://windows.php.net/download/)
-* [Composer](https://getcomposer.org/)
 
 ## Use
+** IMPORTANT: Make sure to clone this repository recursively. Submodules must be installed for it to work. **
+
 in the ```provision``` directory will find the following files:
 
 * ```after.sh```
@@ -26,18 +26,10 @@ in the ```provision``` directory will find the following files:
 Once you modify the files in the ```provision``` directory to your satisfaction, run 
 
   ```
-  $ composer install
-  ```
-  
-from the root directory of the project. This will download the homestead scripts.
-
-After that, just run
-
-  ```
   $ vagrant up
   ```
   
 Pretty simple, right?
 
 **NOTE**
-Make sure that you modify your ```hosts``` file. To do this, go to ```C:\Windows\System32\drivers\etc```. Open the ```hosts``` file you find in that folder. You may have to open it using a text editor with elevated privileges. Add an entry at the end with the IP address you specified and the hostname you specified in your ```Homestead.yaml``` file.
+Make sure that you modify your ```hosts``` file. To do this, go to ```C:\Windows\System32\drivers\etc``` or ```/etc/hosts```. Open the ```hosts``` file you find in that folder. On windows you may have to open it using a text editor with elevated privileges and using Linux or OSX you will need to ```sudo```. Add an entry at the end with the IP address you specified and the hostname you specified in your ```Homestead.yaml``` file.
