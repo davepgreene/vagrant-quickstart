@@ -2,9 +2,10 @@ require 'json'
 require 'yaml'
 
 VAGRANTFILE_API_VERSION = '2'
-conf_dir = File.expand_path('provision/homestead')
 
-provision_dir = File.expand_path('provision')
+vagrantfile_dir = File.dirname(__FILE__)
+provision_dir = File.join(vagrantfile_dir, 'provision')
+conf_dir = File.join(provision_dir, 'homestead')
 
 homestead_yaml_path = File.join(provision_dir, 'Homestead.yaml')
 homestead_json_path = File.join(provision_dir, 'Homestead.json')
